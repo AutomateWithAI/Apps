@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ExternalLink, Search, Sparkles, Brain, MessageSquare, Zap, Heart, Bot, Star, Target } from 'lucide-react';
 
 const aiServices = [
@@ -108,7 +108,7 @@ const categories = ['All', 'Conversational', 'Search', 'Multimodal', 'Open Sourc
 export default function AIPortalApp() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   const filteredServices = aiServices.filter(service => {
     const matchesSearch = service.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -117,7 +117,7 @@ export default function AIPortalApp() {
     return matchesSearch && matchesCategory;
   });
 
-  const handleCardClick = (url) => {
+  const handleCardClick = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
